@@ -16,7 +16,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Update="rules.json">
+        <None Update="MAPsharp.json">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>

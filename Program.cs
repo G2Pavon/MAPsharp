@@ -18,7 +18,7 @@ class Program
         {
             string inputPath = args[0];
             string outputPath = args.Length >= 2 ? args[1] : Path.ChangeExtension(inputPath, ".map");
-            string configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MAPsharp.json");
+            string configPath = Path.Combine(AppContext.BaseDirectory, "MAPsharp.json");
 
             Logger.Step("Validating file");
             Logger.Info($"Found: {inputPath}");
