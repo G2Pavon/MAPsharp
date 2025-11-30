@@ -40,7 +40,7 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Publish
-      run: dotnet publish MAPsharp.csproj -c Release -r ${{ matrix.target }} --self-contained true -p:PublishSingleFile=true -o out
+      run: dotnet publish src/MAPsharp.CLI/MAPsharp.CLI.csproj -c Release -r ${{ matrix.target }} --self-contained true -p:PublishSingleFile=true -o out
 
     - name: Zip Build Assets
       run: |
@@ -52,5 +52,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
       with:
-        tag_name: ${{ inputs.version }}
+        # If triggered by tag push, use the tag name; otherwise use input version
+        tag_name: ${{ github.ref_name || inputs.version }}
         files: ${{ matrix.asset_name }}
