@@ -1,0 +1,52 @@
+name: Publish Release
+
+# Trigger the workflow only when you push a tag like v1.0.0
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: Build for ${{ matrix.target }}
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        include:
+          - target: win-x64
+            asset_name: MAPsharp-windows.zip
+          - target: linux-x64
+            asset_name: MAPsharp-linux.zip
+          - target: osx-x64
+            asset_name: MAPsharp-macos.zip
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET 8
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Publish
+      # Builds a single file executable, self-contained (no .NET install required)
+      # Output goes to the 'out' folder
+      run: dotnet publish -c Release -r ${{ matrix.target }} --self-contained true -p:PublishSingleFile=true -o out
+
+    - name: Zip Build Assets
+      # Zips the executable and the rules.json together
+      run: |
+        cd out
+        zip -r ../${{ matrix.asset_name }} ./*
+        cd ..
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: ${{ matrix.asset_name }}
