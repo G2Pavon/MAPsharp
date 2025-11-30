@@ -1,31 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>net8.0</TargetFramework>
-        <Version>1.1.0</Version>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <AssemblyName>MAPsharp</AssemblyName>
-        <RootNamespace>MAPsharp.CLI</RootNamespace>
-    </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <Version>1.1.1</Version>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>MAPsharp</AssemblyName>
+        <RootNamespace>MAPsharp.CLI</RootNamespace>
+    </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)'=='Release'">
-        <SelfContained>true</SelfContained>
-        <PublishSingleFile>true</PublishSingleFile>
-        <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-        <PublishReadyToRun>true</PublishReadyToRun>
-    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <SelfContained>true</SelfContained>
+        <PublishSingleFile>true</PublishSingleFile>
+        <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+        <PublishReadyToRun>true</PublishReadyToRun>
+    </PropertyGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\MAPsharp.Lib\MAPsharp.Lib.csproj" />
-    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\MAPsharp.Lib\MAPsharp.Lib.csproj" />
+    </ItemGroup>
 
-    <ItemGroup>
-        <None Update="..\..\MAPsharp.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <Link>MAPsharp.json</Link>
-        </None>
-    </ItemGroup>
+    <ItemGroup>
+        <None Update="MAPsharp.json"> 
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+                         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </None>
+    </ItemGroup>
 
 </Project>
