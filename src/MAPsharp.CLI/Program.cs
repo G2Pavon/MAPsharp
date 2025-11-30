@@ -8,7 +8,7 @@ namespace MAPsharp.CLI;
 
 class Program
 {
-    private const string AppVersion = "1.0.0";
+    private const string AppVersion = "1.1.0";
 
     static void Main(string[] args)
     {
