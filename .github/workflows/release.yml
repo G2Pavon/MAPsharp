@@ -1,7 +1,7 @@
 name: Publish Release
 
-# Trigger the workflow only when you push a tag like v1.0.0
 on:
+  workflow_dispatch:
   push:
     tags:
       - 'v*'
@@ -34,12 +34,9 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Publish
-      # Builds a single file executable, self-contained (no .NET install required)
-      # Output goes to the 'out' folder
       run: dotnet publish -c Release -r ${{ matrix.target }} --self-contained true -p:PublishSingleFile=true -o out
 
     - name: Zip Build Assets
-      # Zips the executable and the rules.json together
       run: |
         cd out
         zip -r ../${{ matrix.asset_name }} ./*
