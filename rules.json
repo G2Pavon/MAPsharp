@@ -1,0 +1,40 @@
+{
+  "RemoveKey": [
+    "id"
+  ],
+  "RemoveEntity": [
+    "logic_auto",
+    "env_cubemap",
+    "env_credits",
+    "shadow_control"
+  ],
+  "Replace": [
+    {
+      "OldKey": "classname",
+      "OldValue": "prop_static",
+      "NewKey": "classname",
+      "NewValue": "env_sprite"
+    },
+    {
+      "OldKey": "classname",
+      "OldValue": "prop_dynamic",
+      "NewKey": "classname",
+      "NewValue": "env_sprite"
+    },
+    {
+      "OldKey": "solidity",
+      "OldValue": "1",
+      "NewKey": "zhlt_noclip",
+      "NewValue": "0"
+    }
+  ],
+  "ReplaceMaterials": {
+    "toolsnodraw": "null",
+    "toolstrigger": "aaatrigger",
+    "toolsskybox": "sky",
+    "toolsskip": "skip",
+    "toolshint": "hint",
+    "toolsplayerclip": "clip",
+    "toolsorigin": "origin"
+  }
+}
