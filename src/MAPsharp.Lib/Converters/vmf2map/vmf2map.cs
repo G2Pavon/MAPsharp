@@ -1,11 +1,10 @@
 using System.Text.Json;
-using MAPsharp.Core;
-using MAPsharp.Formats.map;
-using MAPsharp.Formats.vmf;
+using MAPsharp.Lib.Formats.map;
+using MAPsharp.Lib.Formats.vmf;
 
-namespace MAPsharp.Converters;
+namespace MAPsharp.Lib.Converters.vmf2map;
 
-public class VmfConverter : IMapConverter
+public class VmfToMap : IMapConverter
 {
     private readonly Dictionary<string, string> _materialCache = new(StringComparer.OrdinalIgnoreCase);
     public bool CanConvert(string extension)
@@ -18,7 +17,7 @@ public class VmfConverter : IMapConverter
         if (string.IsNullOrEmpty(configPath) || !File.Exists(configPath))
         {
             Logger.Warning("VMF rules file not found");
-            return new VmfOptions();
+            return new Vmf2MapOptions();
         }
         
         Logger.Info($"Loading rules: {configPath}");
@@ -26,7 +25,7 @@ public class VmfConverter : IMapConverter
         {
             var jsonOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             string jsonString = File.ReadAllText(configPath);
-            var rules = JsonSerializer.Deserialize<VmfOptions>(jsonString, jsonOptions) ?? new VmfOptions();
+            var rules = JsonSerializer.Deserialize<Vmf2MapOptions>(jsonString, jsonOptions) ?? new Vmf2MapOptions();
 
             if (rules.RemoveKey != null)
                 rules.RemoveKey = new HashSet<string>(rules.RemoveKey.Select(r => r.ToLower()));
@@ -38,13 +37,13 @@ public class VmfConverter : IMapConverter
         catch (Exception ex)
         {
             Logger.Error($"Loading rules: {ex.Message}");
-            return new VmfOptions();
+            return new Vmf2MapOptions();
         }
     }
     
     public Map Convert(string inputPath, IConverterOptions options)
     {
-        var rules = options as VmfOptions ?? new VmfOptions();
+        var rules = options as Vmf2MapOptions ?? new Vmf2MapOptions();
         
         Logger.Info($"Loading file: {inputPath}");
         var input = new Vmf(inputPath);
@@ -79,7 +78,7 @@ public class VmfConverter : IMapConverter
         return output;
     }
 
-    private MapEntity? ConvertEntity(VmfEntity sourceVmfEntity, VmfOptions rules)
+    private MapEntity? ConvertEntity(VmfEntity sourceVmfEntity, Vmf2MapOptions rules)
     {
         var propsProcessed = new Dictionary<string, string>(sourceVmfEntity.Properties);
         if (rules.FlagConvertEntities)
@@ -130,7 +129,7 @@ public class VmfConverter : IMapConverter
         return goldsrcEntity;
     }
 
-    private MapBrush ConvertToBrush(VmfSolid sourceVmfSolid, VmfOptions rules)
+    private MapBrush ConvertToBrush(VmfSolid sourceVmfSolid, Vmf2MapOptions rules)
     {
         return new MapBrush
         {
@@ -138,7 +137,7 @@ public class VmfConverter : IMapConverter
         };
     }
 
-    private MapFace ConvertSide(VmfSide sourceVmfSide, VmfOptions rules)
+    private MapFace ConvertSide(VmfSide sourceVmfSide, Vmf2MapOptions rules)
     {
         return new MapFace
         {
@@ -151,7 +150,7 @@ public class VmfConverter : IMapConverter
             Rotation = sourceVmfSide.Rotation
         };
     }
-    private string ConvertMaterial(string sourceMaterial, VmfOptions rules)
+    private string ConvertMaterial(string sourceMaterial, Vmf2MapOptions rules)
     {
         if (_materialCache.TryGetValue(sourceMaterial, out string? cachedMaterial)) return cachedMaterial;
 

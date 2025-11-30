@@ -1,18 +1,18 @@
-using MAPsharp.Core;
+using MAPsharp.Lib.Converters.vmf2map;
 
-namespace MAPsharp.Converters;
+namespace MAPsharp.Lib.Converters;
 
 public static class ConverterFactory
 {
-    private static readonly List<IMapConverter> _converters = new()
+    private static readonly List<IMapConverter> Converters = new()
     {
-        new VmfConverter(),
+        new VmfToMap(),
     };
 
     public static IMapConverter GetConverterForFile(string filePath)
     {
         string extension = Path.GetExtension(filePath);
-        var converter = _converters.FirstOrDefault(c => c.CanConvert(extension));
+        var converter = Converters.FirstOrDefault(c => c.CanConvert(extension));
 
         if (converter == null)
         {

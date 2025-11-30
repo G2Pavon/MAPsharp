@@ -1,8 +1,10 @@
 ﻿using System.Diagnostics;
-using MAPsharp.Converters;
-using MAPsharp.Core;
 
-namespace MAPsharp;
+using MAPsharp.Lib;
+using MAPsharp.Lib.Converters;
+using MAPsharp.Lib.Formats.map;
+
+namespace MAPsharp.CLI;
 
 class Program
 {
@@ -35,7 +37,7 @@ class Program
             Logger.Step("Converting");
             var stopwatch = Stopwatch.StartNew();
 
-            Formats.map.Map mapOutput;
+            Map mapOutput;
             try 
             {
                 mapOutput = converter.Convert(inputPath, options);

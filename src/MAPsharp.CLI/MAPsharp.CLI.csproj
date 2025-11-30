@@ -6,6 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AssemblyName>MAPsharp</AssemblyName>
+        <RootNamespace>MAPsharp.CLI</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -16,13 +17,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Update="MAPsharp.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
+        <ProjectReference Include="..\MAPsharp.Lib\MAPsharp.Lib.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Formats\" />
+        <None Update="..\..\MAPsharp.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>MAPsharp.json</Link>
+        </None>
     </ItemGroup>
 
 </Project>

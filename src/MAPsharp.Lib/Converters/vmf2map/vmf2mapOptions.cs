@@ -1,7 +1,5 @@
-using MAPsharp.Core;
-
-namespace MAPsharp.Converters;
-public class VmfOptions : IConverterOptions
+namespace MAPsharp.Lib.Converters.vmf2map;
+public class Vmf2MapOptions : IConverterOptions
 {
     public bool FlagConvertEntities { get; set; } = true;     
     public bool FlagRemoveEntities { get; set; } = true;       

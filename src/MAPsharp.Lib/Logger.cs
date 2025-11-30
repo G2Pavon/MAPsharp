@@ -1,4 +1,4 @@
-namespace MAPsharp.Core;
+namespace MAPsharp.Lib;
 
 public static class Logger
 {

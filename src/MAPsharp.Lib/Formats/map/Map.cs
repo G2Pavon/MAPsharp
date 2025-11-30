@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace MAPsharp.Formats.map
+namespace MAPsharp.Lib.Formats.map
 {
 
     public class Map

@@ -1,4 +1,4 @@
-namespace MAPsharp.Formats.map
+namespace MAPsharp.Lib.Formats.map
 {
     public class MapEntity
     {

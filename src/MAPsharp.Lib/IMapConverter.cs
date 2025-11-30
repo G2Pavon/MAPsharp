@@ -1,6 +1,6 @@
-using MAPsharp.Formats.map;
+using MAPsharp.Lib.Formats.map;
 
-namespace MAPsharp.Core;
+namespace MAPsharp.Lib;
 
 public interface IMapConverter
 {

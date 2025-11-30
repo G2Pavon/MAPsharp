@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace MAPsharp.Formats.vmf
+namespace MAPsharp.Lib.Formats.vmf
 {
 
     public class Vmf

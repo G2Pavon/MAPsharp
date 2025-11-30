@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAPsharp", "MAPsharp.csproj", "{B011142A-CB87-44AC-B58C-4551A4D9E192}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F9477891-6D2F-438C-B0C1-5A80904FF7E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAPsharp.Lib", "src\MAPsharp.Lib\MAPsharp.Lib.csproj", "{EFA31E1B-C3AB-49B5-879F-CDB8A2270474}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAPsharp.CLI", "src\MAPsharp.CLI\MAPsharp.CLI.csproj", "{46C74C08-8247-4C21-A73B-B722CB85A2BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +18,17 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B011142A-CB87-44AC-B58C-4551A4D9E192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B011142A-CB87-44AC-B58C-4551A4D9E192}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B011142A-CB87-44AC-B58C-4551A4D9E192}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B011142A-CB87-44AC-B58C-4551A4D9E192}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFA31E1B-C3AB-49B5-879F-CDB8A2270474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA31E1B-C3AB-49B5-879F-CDB8A2270474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA31E1B-C3AB-49B5-879F-CDB8A2270474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA31E1B-C3AB-49B5-879F-CDB8A2270474}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46C74C08-8247-4C21-A73B-B722CB85A2BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C74C08-8247-4C21-A73B-B722CB85A2BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C74C08-8247-4C21-A73B-B722CB85A2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C74C08-8247-4C21-A73B-B722CB85A2BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EFA31E1B-C3AB-49B5-879F-CDB8A2270474} = {F9477891-6D2F-438C-B0C1-5A80904FF7E4}
+		{46C74C08-8247-4C21-A73B-B722CB85A2BA} = {F9477891-6D2F-438C-B0C1-5A80904FF7E4}
 	EndGlobalSection
 EndGlobal
